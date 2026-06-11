@@ -208,20 +208,5 @@ The following inventory is based on direct inspection of the uploaded source arc
 | `数据库修补.py` | 169 | 135 | ok | patch_24Q4_units_v1.py |
 | `检查并更正.py` | 668 | 523 | ok | Phase 0: Audit & Fix FullAttendance_Database.xlsx (wide sheet) |
 
-## Known limitations of the current code archive
-1. **Hard-coded local paths**: many scripts refer to local Windows directories from the original analysis environment. This is expected for a working archive but should be replaced by a configuration file for final release.
-2. **Mixed language filenames**: Chinese filenames are retained for provenance. For journal review, an English `CODE_MAP.md` or renamed clean release may improve readability.
-3. **Legacy and exploratory scripts**: not every script corresponds to a final manuscript table. Some scripts document exploratory work, debugging, visualization or earlier versions.
-4. **No raw data**: full reproduction requires controlled-access data or de-identified derived matrices.
-5. **No pinned environment yet**: add `requirements.txt`, `environment.yml`, and R `sessionInfo()` before final archival release.
-
-## Recommended archival release steps
-1. Add a license, preferably `MIT` or `Apache-2.0`, unless institutional policy requires otherwise.
-2. Add `CITATION.cff`.
-3. Add `requirements.txt` and `sessionInfo_R.txt`.
-4. Move non-manuscript or legacy items into `legacy/`.
-5. Create a GitHub release named `v1.0.0-submission`.
-6. Archive the release with Zenodo, Figshare or OSF to obtain a DOI.
-7. Update the manuscript Code availability statement with the DOI.
 ## Contact
 For controlled-access data requests or questions about the analysis workflow, contact the corresponding author listed in the manuscript.
