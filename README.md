@@ -27,27 +27,6 @@ The repository is intended to support transparency by showing how the manuscript
 ## Data availability and privacy
 Raw individual-level longitudinal data are not included because the data contain sensitive psychological assessments from real-world rescue units and are subject to confidentiality agreements, participant privacy protections and institutional data-governance restrictions.
 To support reproducibility, de-identified derived analysis matrices, codebooks and summary result tables needed to reproduce the main analyses may be made available under controlled-access conditions after institutional approval and completion of a data-use agreement. The public code documents the analytic workflow but does not contain raw participant-level records.
-## Recommended clean release structure
-For journal submission or archival release, the following cleaner structure is recommended:
-```text
-README.md
-LICENSE
-CITATION.cff
-requirements.txt
-sessionInfo_R.txt
-code/
-  00_data_harmonization/
-  01_database_qc/
-  02_measurement_comparability/
-  03_cross_time_coupling/
-  04_resource_coping/
-  05_bounded_range/
-  06_boundary_prediction/
-  07_trajectory_exploratory/
-legacy/
-outputs_placeholder/
-```
-The current repository preserves the original working-script names, including Chinese filenames, to retain provenance.
 ## Suggested workflow map
 | Manuscript / Supplementary component | Main scripts or folders | Notes |
 |---|---|---|
