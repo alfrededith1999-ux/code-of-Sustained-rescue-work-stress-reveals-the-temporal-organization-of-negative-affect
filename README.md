@@ -1,196 +1,70 @@
-[# code-of-Sustained-rescue-work-stress-reveals-the-temporal-organization-of-negative-affect](https://github.com/alfrededith1999-ux/code-of-Sustained-rescue-work-stress-reveals-the-temporal-organization-of-negative-affect)
-This repository contains analysis code used for the manuscript:
-
-Sustained rescue-work stress reveals the temporal organization of negative affect
-
-The study uses a two-stage longitudinal discovery–validation design to examine whether sustained rescue-work stress reveals reproducible temporal organization in negative affect. The analytic workflow covers data assembly, longitudinal measurement comparability, cross-time coupling analyses, resource–coping differentiation analyses, bounded-range analyses, boundary tests of anxiety-dominant switching, predictive validation, and robustness/sensitivity checks.
-
-Repository status
-
-This repository is intended to document the analytic workflow used in the manuscript. It includes Python and R scripts used during data preprocessing, feature construction, model estimation, robustness checking and result interpretation.
-
-The repository does not include raw individual-level participant data. The individual-level longitudinal data are subject to confidentiality agreements, participant privacy protections and institutional data-governance restrictions. Full numerical reproduction of the manuscript results therefore requires authorized access to the corresponding derived analysis matrices or controlled-access data files.
-
-Manuscript summary
-
-The manuscript examines whether negative affective states, psychological resources and coping-related regulation show temporally organized patterns under sustained stress. Rescue work is treated as a naturalistic high-demand context rather than as an occupation-specific endpoint.
-
-The main analytic logic is organized around four empirical layers:
-
-Cross-time coupling of negative affective states
-Depressive symptoms and anxiety symptoms were examined across comparable longitudinal windows. The primary analysis tested whether depressive symptoms at time t predicted anxiety symptoms at time t + 1, while adjusting for anxiety at time t. The reverse anxiety-to-depression pathway was also examined.
-Resource–coping differentiation
-Psychological resources and coping-related regulation were tested to determine whether they formed a single resource → coping → emotion mediation chain or occupied different temporal-functional positions.
-Bounded-range coping effects
-Linear and segmented models were compared to test whether coping-related regulation followed a simple “more is better” pattern or showed approximate bounded effective ranges.
-Boundary and predictive validation
-Anxiety-dominant switching was tested as a boundary hypothesis. Prediction models were used only as exploratory risk-stratification analyses, not as deployable clinical screening tools.
-Data availability and privacy
-
-Raw participant-level data are not included in this repository.
-
-The study data include sensitive longitudinal psychological assessments from real-world rescue units. Therefore, individual-level data cannot be publicly released. De-identified derived feature matrices, codebooks and summary result tables may be made available under controlled-access conditions after institutional approval and completion of a data-use agreement.
-
-The public code is provided to support transparency, workflow inspection and reproducibility of the analytic logic. Users should not expect this repository alone to reproduce all manuscript tables without access to the corresponding controlled-access analysis files.
-
-Repository structure
-
-The repository contains root-level scripts and several folders. Some file and folder names are retained in Chinese because they reflect the original analysis workflow.
-
-Root-level workflow scripts
-Script or file	Intended role in the workflow
-Phase 1 发现（Discovery）.py	Discovery-stage analysis script used to identify candidate temporal-organization signals before validation.
-build_master_table.py	Constructs or consolidates master analysis tables.
-check_duplicates_id_wave.py	Checks duplicate participant-by-wave records.
-python check_master.py	Checks the master table or master dataset structure.
-rebuild_phq_and_rerun_baseline.py	Rebuilds PHQ-related variables and reruns baseline analyses.
-rerun_baseline_with_pos_split.py	Reruns baseline analyses with positive-coping split or related operationalization.
-step0_mi_gen_and_run.py	Step 0 workflow for multiple-imputation generation and execution.
-step0_mi_lavaan_runner.py	Python runner for lavaan-related measurement or invariance analyses.
-run_mi_lavaan.R	R script for multiple-imputation and lavaan-based modelling.
-step1_build_derived_metrics.py	Builds derived longitudinal metrics and analytic features.
-step2_crosslag_mediation_H1.py	Cross-lagged and mediation analyses for resource–coping–emotion relations.
-step2_H1A_parallel_POS_NEG.py	Parallel positive/negative coping-related analyses.
-step2_H1B_delta_change_mediation.py	Lagged change-score mediation analysis.
-step2_dedup_for_gray.py	Deduplication step for gray-zone or risk-stratification analyses.
-step3_ri_clpm_res_cop.py	RI-CLPM or resource–coping temporal modelling.
-step3_transform_check.py	Checks raw, standardized and transformed scoring approaches.
-step4_H3_anxiety_takeover.py	Boundary test for anxiety-dominant switching / anxiety-takeover hypothesis.
-train_baseline_phq.py	Baseline prediction modelling using PHQ-related outcomes or features.
-planC_multiscale_turnpos.py	Multiscale turning-point or bounded-range analysis under Plan C.
-planC_traj_bayes_gmm_ml.py	Trajectory, Bayesian, GMM and machine-learning analyses under Plan C.
-PlanC 风险排序 + 轨迹解释：灰区变窄（只灰不确定的人）.py	Risk ranking and trajectory interpretation script for gray-zone cases.
-trajectory_risk_pipeline.py	Trajectory-informed risk pipeline.
-traj_bayes_lgm_gmm_all_scales.py	Bayesian trajectory, latent growth and growth-mixture modelling across scales.
-traj_bayes_lgm_gmm_all_scales_v2.py	Updated version of the trajectory/Bayesian/LGM/GMM workflow.
-traj_curve_bayes_gmm_bic.py	Trajectory curve and BIC-based model comparison script.
-debug_prob_collapse.py	Debugging script for probability collapse or prediction-output issues.
-interpret_baseline.py	Interpretation of baseline model outputs.
-interpret_baseline_robust_v2.py	Robust interpretation of baseline model outputs.
-interpret_planC_results.py	Interpretation of Plan C modelling outputs.
-s4_sonar_runner.py	Runner script for SONAR-style or staged analyses.
-sonar_runner.py	SONAR-style analysis runner.
-sonar_runner2.py	Alternative SONAR-style analysis runner.
-sonar_policy_runner.py	Policy-oriented SONAR-style runner.
-sonar_policy_runner_fast.py	Faster version of the policy-oriented SONAR-style runner.
-shortform3_runner.py	Short-form or reduced-form analysis runner.
-数据准备.py	Data preparation script.
-机制分析.py	Mechanism-analysis script.
-机制探索.py	Mechanism-exploration script.
-灰区+发展路径主分析.py	Main analysis for gray-zone cases and developmental pathways.
-计分审计.py	Scoring audit script.
-路径地图.py	Pathway-mapping script.
-量表可比性是地基纵向不变性分段等值.py	Longitudinal measurement comparability / segmented invariance analysis.
-数据分析.zip	Compressed analysis materials or archived analysis files.
-数据合并为长数据/
-
-This folder contains wave-specific scripts used to merge raw questionnaire files into long-format data.
-
-Script	Intended role
-24年1季度.py	2024 Q1 data preparation / long-format construction.
-24年二季度.py	2024 Q2 data preparation / long-format construction.
-24年三季度.py	2024 Q3 data preparation / long-format construction.
-24年四季度.py	2024 Q4 data preparation / long-format construction.
-25年一季度.py	2025 Q1 data preparation / long-format construction.
-25年二季度.py	2025 Q2 data preparation / long-format construction.
-25年三季度.py	2025 Q3 data preparation / long-format construction.
-25年四季度.py	2025 Q4 data preparation / long-format construction.
-打印列名.py	Prints or exports raw column names for auditing and harmonization.
-探索性因素分析.py	Exploratory factor analysis script.
-数据体检.py	Data health check / quality-control script.
-分组用的/
-
-This folder contains grouping, participation and missingness-screening scripts.
-
-Script	Intended role
-参与概况表.py	Summarizes participation coverage and wave availability.
-缺失率筛查.py	Screens missingness rates.
-构建全勤队列和AB分组.py	Builds complete-attendance cohort and A/B grouping variables.
-AB_bridge_分组统计.py	Summarizes A/B grouping statistics.
-pyhon文件/
-
-The folder name is preserved as uploaded. It contains database-construction, unit-repair, quality-control, holdout construction, high-risk label, visualization, CTSEM and sensitivity-analysis scripts.
-
-Important files include:
-
-Script	Intended role
-build_psych_master_db.py	Builds the psychological master database.
-build_psych_master_db - 副本.py	Backup/copy of the master database construction script.
-check_psych_master_db.py	Checks the constructed psychological master database.
-repair_and_diagnose_db_v2.py	Repairs and diagnoses database structure, version 2.
-repair_and_diagnose_db_v3.py	Repairs and diagnoses database structure, version 3.
-add_canon_fields_and_recheck.py	Adds canonical fields and rechecks database integrity.
-list_all_columns_to_txt.py	Exports all column names for documentation.
-make_dictionary_view.py	Builds a dictionary or data-dictionary view.
-make_unit_filled_view.py	Builds unit-filled view for unit-level information.
-make_bigunit_from_excelname_v3.py	Extracts broader unit information from Excel filenames.
-make_bigunit_from_filename_view.py	Builds unit information from filename-derived views.
-make_bigunit_from_folders_v2.py	Extracts unit information from folder structure.
-make_bigunit_manual_v4.py to make_bigunit_manual_v5_3_1.py	Manual unit-coding or unit-repair scripts.
-patch_24Q4_units_v1.py	Patches 2024 Q4 unit information.
-patch_24Q4_units_v2_from_rawfiles.py	Patches 2024 Q4 unit information from raw files.
-patch_24Q4_units_v2_1_from_rawfiles.py	Updated 2024 Q4 unit patch from raw files.
-patch_24Q4_bigunit_by_context_v1.py	Patches broader unit labels by context.
-patch_24Q4_bigunit_by_signature_v2.py	Patches broader unit labels by signature.
-routeA_srcfile_bigunit_v1.py	Route A unit/backfill workflow using source-file unit information.
-routeA_v2_backfill_by_metafile_seq.py	Route A backfill using metafile sequence.
-routeA_v3_backfill_by_metaid_seq.py	Route A backfill using metadata ID sequence.
-routeA_v4_personfill_keyword.py	Route A person-level filling using keyword rules.
-routeA_v4_personfill_keyword_fast.py	Faster version of person-level keyword filling.
-routeA_v5_backfill_bigunit_from_raw.py	Route A broader-unit backfill from raw data.
-make_drop24_rekey_v6.py	Re-keying / repair workflow involving 2024 data.
-qc_v6_drop24_rekey.py	Quality control for re-keying workflow.
-qc_v6_24_only.py	Quality control restricted to 2024 data.
-make_highrisk_labels_for_schemeC.py	Constructs high-risk labels for Scheme C prediction.
-qc_highrisk_labels.py	Quality-control check for high-risk labels.
-make_schemeC_unit_time_holdout.py	Constructs unit-time holdout split for Scheme C.
-make_schemeC_unit_time_holdout_v2.py	Updated unit-time holdout split for Scheme C.
-qc_schemeC_test_event_counts.py	Checks event counts in the Scheme C test set.
-step0_efa_then_mi_auto.py	EFA followed by automated multiple-imputation workflow.
-step0_pcq24_theory_mi_fix.py	Theory-guided PCQ24 multiple-imputation repair/fix script.
-step3_submit_dt_ctsem_res_cop.py	CTSEM-related resource–coping dynamic-time analysis.
-step4_H3_takeover_strong_v2.py	Updated anxiety-takeover / H3 boundary-test script.
-psych_3d_viz_dash.py, psych_3d_viz_dash_v2.py	3D visualization dashboard scripts.
-psych_3d_bigunit_dash_v4.py, psych_3d_bigunit_dash_v4_1.py	Unit-level or broader-unit visualization dashboards.
-analyze_personkey_mismatch_types.py	Diagnoses participant-key mismatch types.
-数据库修补.py	Database repair script.
-检查并更正.py	Check-and-correct script.
-312321.py, RouteA v3.py	Legacy or auxiliary scripts retained for workflow documentation.
-Suggested analytic workflow
-
-The scripts were developed iteratively. The exact execution order may depend on the local data structure and controlled-access files. A conservative workflow is:
-
-Raw data inspection and wave-specific long-format construction
-Use scripts in 数据合并为长数据/ to prepare wave-specific datasets, harmonize column names and inspect data quality.
-Master database construction and unit repair
-Use build_psych_master_db.py, check_psych_master_db.py, the make_bigunit_*, patch_*, routeA_*, and repair_and_diagnose_db_* scripts in pyhon文件/ to build and check the master longitudinal database.
-Grouping, participation and missingness checks
-Use 分组用的/ scripts and quality-control scripts such as 缺失率筛查.py, 参与概况表.py, qc_v6_drop24_rekey.py, and qc_highrisk_labels.py.
-Derived metrics and scoring audit
-Use step1_build_derived_metrics.py, 计分审计.py, 路径地图.py, and related scripts to build derived variables, scoring checks and analytic feature tables.
-Measurement comparability and multiple-imputation / lavaan workflows
-Use 量表可比性是地基纵向不变性分段等值.py, step0_mi_gen_and_run.py, step0_mi_lavaan_runner.py, and run_mi_lavaan.R.
-Primary temporal analyses
-Use step2_crosslag_mediation_H1.py, step2_H1A_parallel_POS_NEG.py, step2_H1B_delta_change_mediation.py, step3_ri_clpm_res_cop.py, and step3_transform_check.py for cross-time coupling, resource–coping differentiation and transformation checks.
-Bounded-range and nonlinear analyses
-Use planC_multiscale_turnpos.py and related Plan C scripts to examine approximate turning regions and bounded-range coping effects.
-Boundary tests of anxiety-dominant switching
-Use step4_H3_anxiety_takeover.py and pyhon文件/step4_H3_takeover_strong_v2.py.
-Predictive validation and exploratory risk stratification
-Use train_baseline_phq.py, trajectory_risk_pipeline.py, planC_traj_bayes_gmm_ml.py, PlanC 风险排序 + 轨迹解释：灰区变窄（只灰不确定的人）.py, and 灰区+发展路径主分析.py.
-Trajectory and discovery-stage analyses
-Use Phase 1 发现（Discovery）.py, traj_bayes_lgm_gmm_all_scales.py, traj_bayes_lgm_gmm_all_scales_v2.py, and traj_curve_bayes_gmm_bic.py.
-Interpretation and reporting checks
-Use interpret_baseline.py, interpret_baseline_robust_v2.py, interpret_planC_results.py, 机制分析.py, and 机制探索.py.
-Software environment
-
-The codebase contains primarily Python scripts and one R script. Because scripts were developed across multiple analytic stages, users should inspect individual import statements before execution.
-
-Recommended baseline environment:
-
-Python 3.10 or later
-R 4.3 or later
-Common Python packages likely required by the workflow:
+# Code for *Sustained rescue-work stress reveals the temporal organization of negative affect*
+This repository contains the analysis-code archive for the manuscript **Sustained rescue-work stress reveals the temporal organization of negative affect**. The manuscript uses a two-stage longitudinal discovery–validation design to examine whether sustained rescue-work stress reveals temporally organized patterns in negative affect, psychological resources and coping-related regulation.
+> **Important**: this repository documents the analytic workflow. It does not contain raw participant-level data. Full numerical reproduction requires authorized access to the corresponding controlled-access or derived analysis files.
+## Static code-audit summary
+The uploaded repository archive was inspected script-by-script before this README was drafted. This was a static source-code inspection, not a re-execution of the analyses.
+- Python scripts inspected: **106**.
+- R scripts inspected: **1** (`run_mi_lavaan.R`).
+- Python syntax/AST parsing: **106/106 scripts parsed successfully**.
+- Non-analysis or archival items detected: `step0_mi_lavaan_runner.py.bak`, `数据分析.zip`, `pyhon文件/python` (empty file), and `pyhon文件/312321.py` (non-manuscript Gantt-chart utility). These should be moved to a `legacy/` folder or omitted from a formal release if a cleaner submission archive is desired.
+- Many scripts contain local Windows path constants from the original working environment. Users must edit file paths or add a project-level configuration file before execution.
+## What this repository is for
+The repository is intended to support transparency by showing how the manuscript analyses were implemented or developed. It covers the following major layers:
+1. Wave-specific questionnaire harmonization and long-format/wide-format construction.
+2. Master database construction, participant linkage, deduplication, unit-label repair and quality control.
+3. Longitudinal measurement comparability / measurement-invariance checks.
+4. Derived feature construction and scoring audits.
+5. Cross-time coupling and lagged mediation / resource–coping differentiation analyses.
+6. Within-person, RI-CLPM and continuous-time resource–coping analyses.
+7. Bounded-range / approximate turning-region analyses.
+8. Boundary tests of anxiety-dominant switching.
+9. Prediction, calibration, decision-curve and risk-stratification analyses.
+10. Exploratory trajectory, Bayesian growth, GMM and gray-zone analyses.
+## What this repository is not
+- It is **not** a public raw-data release.
+- It is **not** a one-click fully reproducible package unless the controlled-access analysis matrices and local path configuration are supplied.
+- It should not be interpreted as a guarantee that every exploratory or legacy script contributed directly to a final manuscript table. The tables below mark script roles conservatively.
+## Data availability and privacy
+Raw individual-level longitudinal data are not included because the data contain sensitive psychological assessments from real-world rescue units and are subject to confidentiality agreements, participant privacy protections and institutional data-governance restrictions.
+To support reproducibility, de-identified derived analysis matrices, codebooks and summary result tables needed to reproduce the main analyses may be made available under controlled-access conditions after institutional approval and completion of a data-use agreement. The public code documents the analytic workflow but does not contain raw participant-level records.
+## Recommended clean release structure
+For journal submission or archival release, the following cleaner structure is recommended:
+```text
+README.md
+LICENSE
+CITATION.cff
+requirements.txt
+sessionInfo_R.txt
+code/
+  00_data_harmonization/
+  01_database_qc/
+  02_measurement_comparability/
+  03_cross_time_coupling/
+  04_resource_coping/
+  05_bounded_range/
+  06_boundary_prediction/
+  07_trajectory_exploratory/
+legacy/
+outputs_placeholder/
+```
+The current repository preserves the original working-script names, including Chinese filenames, to retain provenance.
+## Suggested workflow map
+| Manuscript / Supplementary component | Main scripts or folders | Notes |
+|---|---|---|
+| Sample construction, raw-wave harmonization and data preparation | `数据合并为长数据/`, `build_master_table.py`, `数据准备.py`, `pyhon文件/build_psych_master_db.py` | Wave-specific scripts harmonize questionnaire exports and build analysis-ready wide/master tables. |
+| Deduplication, participant linkage, unit repair and database QC | `check_duplicates_id_wave.py`, `pyhon文件/check_psych_master_db.py`, `pyhon文件/repair_and_diagnose_db_v*.py`, `pyhon文件/routeA_*`, `pyhon文件/patch_*`, `pyhon文件/make_bigunit_*` | These scripts repair IDs, person keys, unit labels and database integrity. |
+| Measurement comparability / longitudinal invariance | `量表可比性是地基纵向不变性分段等值.py`, `step0_mi_gen_and_run.py`, `step0_mi_lavaan_runner.py`, `run_mi_lavaan.R` | Generates Mplus or lavaan workflows for configural, metric and scalar/threshold comparability checks. |
+| Derived metrics and scoring audit | `step1_build_derived_metrics.py`, `计分审计.py`, `路径地图.py` | Creates derived features, score checks and path/trajectory-ready variables. |
+| Discovery-stage signal generation | `Phase 1 发现（Discovery）.py`, `traj_bayes_lgm_gmm_all_scales*.py`, `traj_curve_bayes_gmm_bic.py` | Exploratory/discovery analyses used to generate validation propositions. |
+| Cross-time coupling and resource–coping differentiation | `step2_crosslag_mediation_H1.py`, `step2_H1A_parallel_POS_NEG.py`, `step2_H1B_delta_change_mediation.py`, `step3_ri_clpm_res_cop.py`, `pyhon文件/step3_submit_dt_ctsem_res_cop.py` | Lagged mediation, positive/negative coping split, RI-CLPM and continuous-time auxiliary analyses. |
+| Transformation and scoring robustness | `step3_transform_check.py`, `rebuild_phq_and_rerun_baseline.py`, `rerun_baseline_with_pos_split.py` | Checks raw, standardized, transformed and alternative operationalizations. |
+| Bounded-range / approximate turning-region analyses | `planC_multiscale_turnpos.py`, `planC_traj_bayes_gmm_ml.py`, `PlanC 风险排序 + 轨迹解释：灰区变窄（只灰不确定的人）.py` | Tests nonlinear/segmented patterns and risk/trajectory layers. Some scripts also include prediction components. |
+| Boundary test: anxiety-dominant switching | `step4_H3_anxiety_takeover.py`, `pyhon文件/step4_H3_takeover_strong_v2.py` | Tests whether anxiety-to-depression paths strengthen under high or increasing stress contexts. |
+| Predictive validation and interpretation | `train_baseline_phq.py`, `trajectory_risk_pipeline.py`, `interpret_baseline.py`, `interpret_baseline_robust_v2.py`, `interpret_planC_results.py`, `pyhon文件/make_highrisk_labels_for_schemeC.py`, `pyhon文件/make_schemeC_unit_time_holdout_v2.py` | Prediction, group/unit holdout, risk labels, calibration-style summaries and interpretation outputs. |
+| Exploratory visualization / dashboards | `pyhon文件/psych_3d_*`, `s4_sonar_runner.py`, `sonar_*`, `shortform3_runner.py` | Auxiliary visualization and exploratory/staged analysis scripts; not required for core reproduction. |
+## Software environment
+The repository is mostly Python with one R/lavaan script. A precise frozen environment should be created for final archival release. Based on static import inspection, the main dependencies include:
+```text
 pandas
 numpy
 scipy
@@ -198,44 +72,177 @@ statsmodels
 scikit-learn
 matplotlib
 openpyxl
-Common R packages likely required by the workflow:
+rapidfuzz
+factor_analyzer
+pymc
+plotly
+dash
+umap-learn
+tqdm
+joblib
+python-dateutil
+```
+R dependencies for `run_mi_lavaan.R` include:
+```text
 lavaan
 semTools
-mice
-tidyverse
+readr
+```
+Recommended baseline versions for a clean archival release:
+- Python 3.10 or later.
+- R 4.3 or later.
+- Mplus is optional and only needed for Mplus-based invariance workflows. The lavaan route can be used as an open alternative.
+## Running the code
+Because the raw and derived data files are not included, these commands are templates only. Update paths before running.
+```bash
+# Example: measurement comparability using the Python -> R/lavaan workflow
+python step0_mi_lavaan_runner.py --data_dir path/to/wave/files --out_dir outputs/measurement --rscript path/to/Rscript --estimator MLR
 
-A pinned requirements.txt, environment.yml and R sessionInfo() output should be archived with the final submission release.
+# Example: cross-lagged mediation / resource-coping analysis
+python step2_crosslag_mediation_H1.py --help
 
-Reproducibility notes
+# Example: anxiety-dominant switching boundary test
+python step4_H3_anxiety_takeover.py --help
+```
+Several scripts were originally written as local one-off analysis scripts and may not expose a complete command-line interface. When a script contains hard-coded paths, edit the configuration section at the top of the script or refactor it to use command-line arguments before reuse.
+## Script inventory from static inspection
+The following inventory is based on direct inspection of the uploaded source archive. `LOC` indicates non-empty, non-comment lines. `Syntax` indicates whether Python AST parsing succeeded.
+### `root/`
+| File | Lines | LOC | Syntax | Role / first-line docstring |
+|---|---:|---:|---|---|
+| `Phase 1 发现（Discovery）.py` | 765 | 578 | ok | PHASE 1 — 发现（Discovery） |
+| `PlanC 风险排序 + 轨迹解释：灰区变窄（只灰不确定的人）.py` | 471 | 336 | ok | PlanC 风险排序 + 轨迹解释：灰区变窄（只灰不确定的人） |
+| `build_master_table.py` | 449 | 308 | ok | 一键：读取多季度 Excel（不同sheet/不同命名） -> 统一列名 -> 合并 -> 计算总分 -> 生成推进标签 |
+| `check_duplicates_id_wave.py` | 24 | 17 | ok | Duplicate ID-wave check |
+| `debug_prob_collapse.py` | 123 | 91 | ok | Prediction probability-collapse diagnostic |
+| `interpret_baseline.py` | 276 | 198 | ok | 解读 baseline_phq_preds.csv / baseline_phq_dca.csv（标准化输出 + PASS/FAIL + Excel报告） |
+| `interpret_baseline_robust_v2.py` | 357 | 290 | ok | 鲁棒解读 baseline preds/dca（v2修复版） |
+| `interpret_planC_results.py` | 343 | 270 | ok | 解读方案C（或任意）模型输出的 preds/dca 结果（鲁棒版） |
+| `planC_multiscale_turnpos.py` | 545 | 382 | ok | Multiscale turning-point / turn-positive prediction analysis |
+| `planC_traj_bayes_gmm_ml.py` | 877 | 627 | ok | Trajectory, Bayesian LGM/GMM and ML analysis |
+| `python check_master.py` | 27 | 19 | ok | Auxiliary script retained for workflow provenance. |
+| `rebuild_phq_and_rerun_baseline.py` | 173 | 121 | ok | Auxiliary script retained for workflow provenance. |
+| `rerun_baseline_with_pos_split.py` | 186 | 130 | ok | Auxiliary script retained for workflow provenance. |
+| `s4_sonar_runner.py` | 1097 | 826 | ok | S4-SONAR Runner (NO new data) |
+| `shortform3_runner.py` | 849 | 636 | ok | Adaptive Minimal-Info Risk Inference Runner (PHQ/GAD/DASS) |
+| `sonar_policy_runner.py` | 1412 | 1094 | ok | sonar_policy_runner.py |
+| `sonar_policy_runner_fast.py` | 1015 | 819 | ok | sonar_policy_runner_fast.py |
+| `sonar_runner.py` | 1155 | 881 | ok | 心理声呐（Psychological Sonar）——不加新数据的“最小信息 + 高敏漏报控制”筛查协议 |
+| `sonar_runner2.py` | 711 | 530 | ok | SONAR Runner (no new data) - STRICT FN policy |
+| `step0_mi_gen_and_run.py` | 569 | 421 | ok | Step0 量表可比性（纵向不变性 / 分段等值）——一键版 |
+| `step0_mi_lavaan_runner.py` | 277 | 214 | ok | Step0 纵向/分段等值（测量不变性）——不使用 Mplus：用 Python 调用 R(lavaan/semTools) |
+| `step1_build_derived_metrics.py` | 336 | 259 | ok | Step1 \| 三类派生指标（水平/变化/波动）v2 修复版 |
+| `step2_H1A_parallel_POS_NEG.py` | 410 | 329 | ok | Step2-H1A 并联中介（POS 与 NEG 分开）Cross-lagged Parallel Mediation |
+| `step2_H1B_delta_change_mediation.py` | 359 | 300 | ok | Step2-H1B 变化量中介：RES_T1 -> ΔCOP(T2-T1) -> ΔY(T3-T2) |
+| `step2_crosslag_mediation_H1.py` | 489 | 368 | ok | Step2 早期中介：Cross-lagged Mediation（H1）- v2（修复ID合并 & 分结局dropna） |
+| `step2_dedup_for_gray.py` | 199 | 155 | ok | Auxiliary script retained for workflow provenance. |
+| `step3_ri_clpm_res_cop.py` | 501 | 391 | ok | Step3: RI-CLPM (within-person) 双向跨期：RES <-> COP |
+| `step3_transform_check.py` | 93 | 75 | ok | Auxiliary script retained for workflow provenance. |
+| `step4_H3_anxiety_takeover.py` | 583 | 460 | ok | Step4 H3: 焦虑接管（条件效应）——交互调节 / 暴露上行分层 / 高暴露状态切换 |
+| `train_baseline_phq.py` | 99 | 66 | ok | Auxiliary script retained for workflow provenance. |
+| `traj_bayes_lgm_gmm_all_scales.py` | 474 | 349 | ok | Bayes-LGM (PyMC) -> GMM (sklearn) 轨迹分型：对所有“≥3波次有数据”的量表总分列做轨迹分类 |
+| `traj_bayes_lgm_gmm_all_scales_v2.py` | 574 | 418 | ok | 从建立宽表和长表开始：master(宽) -> long(长) -> Bayes-LGM -> GMM 轨迹分型（所有>=3波次量表） |
+| `traj_curve_bayes_gmm_bic.py` | 544 | 401 | ok | traj_curve_bayes_gmm_bic.py |
+| `trajectory_risk_pipeline.py` | 848 | 666 | ok | Trajectory -> GMM class -> Risk model (calibrated) -> DCA -> Deployment outputs |
+| `数据准备.py` | 574 | 446 | ok | PHASE 0 — 数据准备（Data preparation）+ 构念字典（Construct Dictionary）+ 可检验性审计（Feasibility Audit） |
+| `机制分析.py` | 720 | 524 | ok | Full Pipeline (Mechanism -> ML validation-ready) 保姆级一键脚本（已修复空数据报错） |
+| `机制探索.py` | 461 | 358 | ok | Phase 1（机制探索）写死列名版：RES → COP → Y（按波次分别跑） |
+| `灰区+发展路径主分析.py` | 1079 | 859 | ok | 灰区+发展路径主分析（可直接跑） |
+| `计分审计.py` | 264 | 195 | ok | Phase 0 - Scoring Audit (计分审计) |
+| `路径地图.py` | 1193 | 916 | ok | Direction A: Path Map (Trajectory Patterns + Transition Risk + Protection Factors) |
+| `量表可比性是地基纵向不变性分段等值.py` | 579 | 419 | ok | Step0 量表纵向可比性（分段多时点等值）——Mplus 输入自动换行修复版 |
 
-This repository supports inspection of the analysis workflow, but it is not a standalone public replication package because the raw participant-level data cannot be publicly shared.
+### `数据合并为长数据/`
+| File | Lines | LOC | Syntax | Role / first-line docstring |
+|---|---:|---:|---|---|
+| `24年1季度.py` | 582 | 441 | ok | 问卷星（数字结果）多Excel合并 -> 标准化宽表： |
+| `24年三季度.py` | 719 | 545 | ok | 问卷星多Excel合并（宽表）——写死 META/DEMO + 写死量表题目列 + 注意力题(1/2) + 维度/总分 + 识别CD-RISC 25 |
+| `24年二季度.py` | 565 | 443 | ok | 问卷星Excel（新表头-写死版）： |
+| `24年四季度.py` | 438 | 316 | ok | 问卷星（24年4季度：攀枝花/重庆/阿坝）——写死原文列名硬匹配 -> 合并宽表 + 量表计分 |
+| `25年一季度.py` | 537 | 378 | ok | 问卷星Excel（多文件）→ 量表识别/重命名（量表_题号）→ 注意力题PASS → 量表维度/总分 → 合并宽表 |
+| `25年三季度.py` | 355 | 287 | ok | 问卷星导出Excel：批量标准化列名 + 量表题目重命名(宽表) + 维度/总分 + 注意力题PASS标记 |
+| `25年二季度.py` | 363 | 265 | ok | 问卷星多Excel（每个文件只读第1个sheet）→ 识别量表 → 统一命名(量表_题号) → 计算维度/总分 → 合并宽表输出 |
+| `25年四季度.py` | 489 | 348 | ok | 问卷星导出Excel：自动识别量表区块 -> 统一命名为 量表_题号 -> 计算维度/总分 -> 合并宽表 |
+| `打印列名.py` | 53 | 34 | ok | Print/export Excel column names |
+| `探索性因素分析.py` | 479 | 364 | ok | EFA（探索性因素分析）批处理：按“每个时间点(=每个季度文件) × 每个量表”分别跑 |
+| `数据体检.py` | 117 | 102 | ok | Data quality-control report |
 
-To reproduce the manuscript results, users need:
+### `分组用的/`
+| File | Lines | LOC | Syntax | Role / first-line docstring |
+|---|---:|---:|---|---|
+| `AB_bridge_分组统计.py` | 249 | 184 | ok | 在你的文件夹内： |
+| `参与概况表.py` | 73 | 55 | ok | Participation coverage summary |
+| `构建全勤队列和AB分组.py` | 391 | 277 | ok | 生成两个Excel： |
+| `缺失率筛查.py` | 193 | 140 | ok | 检查： |
 
-access to the controlled or de-identified derived analysis files;
-the wave-specific input tables corresponding to the manuscript analysis;
-the correct local file paths or a project-level configuration file;
-the Python and R package versions used in the final analytic environment;
-the same inclusion, deduplication, scoring and wave-comparability rules described in the manuscript and Supplementary Information.
+### `pyhon文件/`
+| File | Lines | LOC | Syntax | Role / first-line docstring |
+|---|---:|---:|---|---|
+| `312321.py` | 296 | 212 | ok | Legacy/non-manuscript visualization utility; not part of manuscript reproduction. |
+| `RouteA v3.py` | 312 | 262 | ok | RouteA v3: backfill BIG/SUB unit by (WAVE + META_ID + META_SEQ) |
+| `add_canon_fields_and_recheck.py` | 98 | 72 | ok | Auxiliary script retained for workflow provenance. |
+| `analyze_personkey_mismatch_types.py` | 98 | 72 | ok | Participant-key mismatch diagnostic |
+| `build_psych_master_db - 副本.py` | 700 | 520 | ok | build_psych_master_db.py |
+| `build_psych_master_db.py` | 700 | 520 | ok | build_psych_master_db.py |
+| `check_psych_master_db.py` | 474 | 344 | ok | check_psych_master_db.py |
+| `list_all_columns_to_txt.py` | 236 | 191 | ok | Export column names for documentation |
+| `make_bigunit_from_excelname_v3.py` | 454 | 351 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_from_filename_view.py` | 324 | 242 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_from_folders_v2.py` | 265 | 210 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_manual_v4.py` | 382 | 320 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_manual_v5.py` | 372 | 305 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_manual_v5_1.py` | 391 | 325 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_manual_v5_2.py` | 505 | 379 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_manual_v5_3.py` | 283 | 213 | ok | Unit / big-unit harmonization and backfill |
+| `make_bigunit_manual_v5_3_1.py` | 243 | 189 | ok | Unit / big-unit harmonization and backfill |
+| `make_dictionary_view.py` | 24 | 18 | ok | Auxiliary script retained for workflow provenance. |
+| `make_drop24_rekey_v6.py` | 165 | 137 | ok | Auxiliary script retained for workflow provenance. |
+| `make_highrisk_labels_for_schemeC.py` | 231 | 177 | ok | 为 SchemeC split 输出的 CSV 增加“高风险标签”列（不修改 SQLite DB） |
+| `make_schemeC_unit_time_holdout.py` | 234 | 177 | ok | make_schemeC_unit_time_holdout.py |
+| `make_schemeC_unit_time_holdout_v2.py` | 277 | 216 | ok | make_schemeC_unit_time_holdout_v2.py |
+| `make_unit_filled_view.py` | 116 | 104 | ok | Auxiliary script retained for workflow provenance. |
+| `patch_24Q4_bigunit_by_context_v1.py` | 279 | 224 | ok | Unit / big-unit harmonization and backfill |
+| `patch_24Q4_bigunit_by_signature_v2.py` | 372 | 288 | ok | patch_24Q4_bigunit_by_signature_v2.py |
+| `patch_24Q4_units_v1.py` | 161 | 128 | ok | Patch 2024-Q4 unit labels |
+| `patch_24Q4_units_v2_1_from_rawfiles.py` | 475 | 381 | ok | Patch 2024-Q4 unit labels |
+| `patch_24Q4_units_v2_from_rawfiles.py` | 252 | 215 | ok | Patch 2024-Q4 unit labels |
+| `psych_3d_bigunit_dash_v4.py` | 965 | 793 | ERR SyntaxError('unexpected character after line continuation character', ('<unknown>', 549, 48, ' ws = ",".join([f"\'{str(w).replace(\\"\'\\",\\"\'\'\\")}\'" for w in waves])\n', 549, 0)) | Unit / big-unit harmonization and backfill |
+| `psych_3d_bigunit_dash_v4_1.py` | 922 | 774 | ok | Unit / big-unit harmonization and backfill |
+| `psych_3d_viz_dash.py` | 587 | 488 | ok | psych_3d_viz_dash.py |
+| `psych_3d_viz_dash_v2.py` | 481 | 377 | ok | psych_3d_viz_dash_v2.py |
+| `qc_highrisk_labels.py` | 179 | 146 | ok | High-risk label construction or QC |
+| `qc_schemeC_test_event_counts.py` | 68 | 52 | ok | Scheme-C unit-time holdout or label construction |
+| `qc_v6_24_only.py` | 116 | 96 | ok | Auxiliary script retained for workflow provenance. |
+| `qc_v6_drop24_rekey.py` | 108 | 84 | ok | Auxiliary script retained for workflow provenance. |
+| `repair_and_diagnose_db_v2.py` | 626 | 483 | ok | repair_and_diagnose_db_v2.py |
+| `repair_and_diagnose_db_v3.py` | 585 | 482 | ok | repair_and_diagnose_db_v3.py (v3.1 FIXED) |
+| `routeA_srcfile_bigunit_v1.py` | 316 | 253 | ok | Unit / big-unit harmonization and backfill |
+| `routeA_v2_backfill_by_metafile_seq.py` | 297 | 238 | ok | Route-A unit backfill workflow |
+| `routeA_v3_backfill_by_metaid_seq.py` | 312 | 262 | ok | RouteA v3: backfill BIG/SUB unit by (WAVE + META_ID + META_SEQ) |
+| `routeA_v4_personfill_keyword.py` | 183 | 140 | ok | RouteA v4: BIG_UNIT 回填增强（不依赖 META_FILE/META_ID） |
+| `routeA_v4_personfill_keyword_fast.py` | 198 | 159 | ok | Route-A unit backfill workflow |
+| `routeA_v5_backfill_bigunit_from_raw.py` | 381 | 296 | ok | Unit / big-unit harmonization and backfill |
+| `step0_efa_then_mi_auto.py` | 678 | 532 | ok | Auxiliary script retained for workflow provenance. |
+| `step0_pcq24_theory_mi_fix.py` | 465 | 360 | ok | Auxiliary script retained for workflow provenance. |
+| `step3_submit_dt_ctsem_res_cop.py` | 534 | 398 | ok | Continuous-time resource–coping dynamic analysis |
+| `step4_H3_takeover_strong_v2.py` | 1048 | 745 | ok | Anxiety-dominant switching boundary test |
+| `数据库修补.py` | 169 | 135 | ok | patch_24Q4_units_v1.py |
+| `检查并更正.py` | 668 | 523 | ok | Phase 0: Audit & Fix FullAttendance_Database.xlsx (wide sheet) |
 
-Some scripts may contain local path assumptions from the original analysis environment. These paths should be updated before running the scripts in a new environment.
+## Known limitations of the current code archive
+1. **Hard-coded local paths**: many scripts refer to local Windows directories from the original analysis environment. This is expected for a working archive but should be replaced by a configuration file for final release.
+2. **Mixed language filenames**: Chinese filenames are retained for provenance. For journal review, an English `CODE_MAP.md` or renamed clean release may improve readability.
+3. **Legacy and exploratory scripts**: not every script corresponds to a final manuscript table. Some scripts document exploratory work, debugging, visualization or earlier versions.
+4. **No raw data**: full reproduction requires controlled-access data or de-identified derived matrices.
+5. **No pinned environment yet**: add `requirements.txt`, `environment.yml`, and R `sessionInfo()` before final archival release.
 
-Citation
-
-If you use this repository, please cite the manuscript and the code repository.
-
-Recommended repository archival step
-
-Before journal submission or publication, create a versioned release, for example:
-
-v1.0.0-submission
-
-Then archive the release using Zenodo, Figshare, OSF or another DOI-minting repository. After the DOI is generated, update the Citation section and the manuscript Code availability statement.
-
-License
-
-A license file should be added before public reuse of this code. Until a formal license is specified, reuse permissions are not fully defined.
-
-Contact
-
-For questions about controlled-access data or analysis-code interpretation, please contact the corresponding author listed in the manuscript.
+## Recommended archival release steps
+1. Add a license, preferably `MIT` or `Apache-2.0`, unless institutional policy requires otherwise.
+2. Add `CITATION.cff`.
+3. Add `requirements.txt` and `sessionInfo_R.txt`.
+4. Move non-manuscript or legacy items into `legacy/`.
+5. Create a GitHub release named `v1.0.0-submission`.
+6. Archive the release with Zenodo, Figshare or OSF to obtain a DOI.
+7. Update the manuscript Code availability statement with the DOI.
+## Contact
+For controlled-access data requests or questions about the analysis workflow, contact the corresponding author listed in the manuscript.
